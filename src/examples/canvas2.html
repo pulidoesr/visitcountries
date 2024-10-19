@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="250" height="250"></canvas>
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <h2>Toggle Face on Click</h2>
+    <canvas id="faceCanvas" width="250" height="100" style="border: 1px solid black;"></canvas>
+  </body>
+</html>
+
+<script>
+const canvas = document.getElementById("tutorial");
+const ctx = canvas.getContext("2d");
+if (canvas.getContext) {
+  function draw() {
+        const canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          const ctx = canvas.getContext("2d");
+
+          ctx.fillStyle = "rgb(200 0 0)";
+          ctx.fillRect(10, 10, 50, 50);
+
+          ctx.fillStyle = "rgb(0 0 200 / 50%)";
+          ctx.fillRect(30, 30, 50, 50);
+        }
+      }
+      draw();
+    }
+   // Get the canvas and its context
+  const fcanvas = document.getElementById('faceCanvas');
+  const fctx = canvas.getContext('2d');
+
+    // Variable to track the current face (true = happy, false = frowny)
+    let isHappy = true;
+
+    // Function to draw a happy face
+    function drawHappyFace() {
+        fctx.clearRect(0, 0, fcanvas.width, fcanvas.height); // Clear the canvas
+
+        // Draw face circle
+        fctx.beginPath();
+        fctx.arc(150, 150, 100, 0, Math.PI * 2, true); // Outer circle
+        fctx.stroke();
+
+        // Draw eyes
+        fctx.beginPath();
+        fctx.arc(110, 120, 10, 0, Math.PI * 2, true); // Left eye
+        fctx.stroke();
+
+        fctx.beginPath();
+        fctx.arc(190, 120, 10, 0, Math.PI * 2, true); // Right eye
+        fctx.stroke();
+
+        // Draw smile (arc)
+        fctx.beginPath();
+        fctx.arc(150, 160, 50, 0, Math.PI, false); // Smile (half circle)
+        fctx.stroke();
+    }
+
+    // Function to draw a frowny face
+    function drawFrownyFace() {
+        fctx.clearRect(0, 0, fcanvas.width, fcanvas.height); // Clear the canvas
+
+        // Draw face circle
+        fctx.beginPath();
+        fctx.arc(150, 150, 100, 0, Math.PI * 2, true); // Outer circle
+        fctx.stroke();
+
+        // Draw eyes
+        fctx.beginPath();
+        fctx.arc(110, 120, 10, 0, Math.PI * 2, true); // Left eye
+        fctx.stroke();
+
+        fctx.beginPath();
+        fctx.arc(190, 120, 10, 0, Math.PI * 2, true); // Right eye
+        fctx.stroke();
+
+        // Draw frown (arc)
+        fctx.beginPath();
+        fctx.arc(150, 190, 50, 0, Math.PI, true); // Frown (half circle)
+        fctx.stroke();
+    }
+
+    // Initial drawing (happy face)
+    drawHappyFace();
+
+    // Add event listener for canvas click to toggle between happy and frowny face
+    fcanvas.addEventListener('click', function() {
+        if (isHappy) {
+            drawFrownyFace();
+        } else {
+            drawHappyFace();
+        }
+        isHappy = !isHappy; // Toggle the face state
+    });
+
+</script>
