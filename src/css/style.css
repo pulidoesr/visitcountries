@@ -134,3 +134,8 @@ input {
   max-width: 150px;
   margin-bottom: 10px;
 }
+
+#mapFrame {
+  height: 500px; /* Adjust as needed */
+  width: 100%; /* Full width */
+}

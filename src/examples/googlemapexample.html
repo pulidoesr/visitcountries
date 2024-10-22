@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Geocoding Example</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUH8wXyMKJGeueEYOc4XI55U-hfuUZvBY&libraries=places"></script>
+</head>
+<body>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <script>
+        // Initialize map when the window loads
+        window.onload = () => {
+            // Function to get coordinates for a country using the Geocoding API
+            function getCountryCoordinates(countryName) {
+                var geocoder = new google.maps.Geocoder();
+
+                return new Promise((resolve, reject) => {
+                    geocoder.geocode({ address: countryName }, (results, status) => {
+                        if (status === 'OK' && results[0]) {
+                            var location = results[0].geometry.location;
+                            resolve({ lat: location.lat(), lng: location.lng() });
+                        } else {
+                            reject('Country not found: ' + status);
+                        }
+                    });
+                });
+            }
+
+            // Test the geocoding function
+            getCountryCoordinates("Peru")
+                .then(coords => {
+                    console.log("Coordinates:", coords);
+                    // You can now initialize the map with the returned coordinates
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 6,
+                        center: coords
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        };
+    </script>
+</body>
+</html>

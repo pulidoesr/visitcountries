@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Information</title>
     <link rel="stylesheet" href="/src/css/style.css">
-    
+    <script src="/src/js/script.js" type="module"></script>
 </head>
 <body>
     <div class="container">
@@ -17,19 +17,14 @@
             <!-- Country info will appear here -->
         </div>
         <div id="countryMap" class ="info-map">
-            <iframe 
-                id="mapFrame" 
-                width="600" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen=""
-                loading="lazy">
-            </iframe>
+            <div id="mapFrame" 
+                 loading="lazy">
+            </div>
         </div>
 
     </div>
 
-    <script src="/src/js/script.js" type="module"></script>
+   
   
 </body>
 </html>

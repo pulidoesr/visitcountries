@@ -1,23 +1,30 @@
+  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+    key: "AIzaSyDUH8wXyMKJGeueEYOc4XI55U-hfuUZvBY",
+    v: "weekly",
+    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+    // Add other bootstrap parameters as needed, using camel case.
+  });
+
+
 document.getElementById('fetchButton').addEventListener('click', fetchCountryInfo);
+const countryMapDiv = document.getElementById('mapFrame');
 
-  const countryMapDiv = document.getElementById('mapFrame');
-  const { AdvancedMarkerElement, PinElement } = google.maps.importLibrary("marker");
+let map;
 
-import { Loader } from '@googlemaps/js-api-loader';
+async function initMap() {
+  const { Map } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  const position = { lat: 0, lng: 0 };
+  console.log("Google Maps library loaded successfully");
+  map = new Map(countryMapDiv, {
+    center: { lat: 0, lng: 0 },
+    zoom: 8,
+  });
+ 
+}
 
-const loader = new Loader({
-  apiKey: "AIzaSyDUH8wXyMKJGeueEYOc4XI55U-hfuUZv",
-  version: "weekly",
-  libraries: ["maps","places"]
-});
+initMap();
 
-const mapOptions = {
-  center: {
-    lat: 0,
-    lng: 0
-  },
-  zoom: 4
-};
 
 function fetchCountryInfo() {
     const countryName = document.getElementById('countryInput').value.trim();
@@ -50,7 +57,7 @@ function fetchCountryInfo() {
             if (countryName) {
                 getCountryCoordinates(countryName)
                     .then(coords => {
-                        initMap(coords.lat, coords.lng);  // Update the map with new coordinates
+                        showMap(coords.lat, coords.lng);  // Update the map with new coordinates
                     })
                     .catch(error => {
                         console.error(error);
@@ -61,25 +68,20 @@ function fetchCountryInfo() {
         });
 }
 
-async function initMap(lat, lng){
-    var countryLocation = { lat: lat, lng: lng };
-    
-    // Create the map centered on the country
-    var map = new google.maps.Map(document.getElementById('mapFrame'), {
-        zoom: 6,  // Adjust zoom level
-        center: countryLocation  // Set the map's center to the country coordinates
-    });
+// Function to show the map
+function showMap(lat,lng){
+    var countryLocation = { lat:lat, lng:lng };
 
-        const marker = new google.maps.marker.AdvancedMarkerElement({
-            map,
-            position: countryLocation,
-            title: 'Uluru',
-        });
-
+    if (map) { // Check if the map instance exists
+        map.setCenter(countryLocation);
+        map.setZoom(5); // Adjust the zoom level as needed
+    } else {
+        console.error("Map instance is not initialized");
+    }
 }
 
-  // Function to get coordinates for a country using the Geocoding API
-  function getCountryCoordinates(countryName) {
+// Function to get coordinates for a country using the Geocoding API
+function getCountryCoordinates(countryName) {
     var geocoder = new google.maps.Geocoder();
 
     return new Promise((resolve, reject) => {
@@ -93,4 +95,3 @@ async function initMap(lat, lng){
         });
     });    
 }
-
