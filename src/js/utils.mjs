@@ -1,8 +1,4 @@
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'"></meta>
-
-
-
 // Function
 
 async function loadTemplate(path) {
