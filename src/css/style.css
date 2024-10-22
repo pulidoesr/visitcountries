@@ -70,7 +70,7 @@ body, html {
   text-align: center;
 }
 
-/* product grid styles */
+/* World grid styles */
 .world-grid {
   list-style-type: none;
   font-size: 0.5rem;
@@ -89,9 +89,32 @@ body, html {
   border: 2px solid #4CAF50; /* Add a green border */
 }
 
+/* Country Page */
+
 h1 {
   margin-bottom: 20px;
 }
+
+#fetchButton {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 15px 30px; /* Padding inside the button */
+  font-size: 18px; /* Text size */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color change */
+}
+
+#fetchButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+#fetchButton:active {
+  background-color: #3e8e41; /* Even darker green when clicked */
+  transform: scale(0.98); /* Slightly scale down when clicked */
+}
+
 
 input {
   padding: 10px;
