@@ -8,23 +8,20 @@
     <script src="/src/js/script.js" type="module"></script>
 </head>
 <body>
+    <header class="divider" id="main-header"></header>
     <div class="container">
-        <h1>Country Information</h1>
-        <input type="text" id="countryInput" placeholder="Enter country name..." />
-        <button id="fetchButton">Get Country Info</button>
-
-        <div id="countryInfo" class="info-box">
-            <!-- Country info will appear here -->
+        <div id="countryName">
+            <h1></h1>
+             <input type="text" id="countryInput" placeholder="Enter country name..." />
+             <button id="fetchButton">Get Country Info</button>
         </div>
-        <div id="countryMap" class ="info-map">
+        <!-- Country info will appear here -->
+        <div id="countryInfo" class="info-box"></div> 
+            <!-- Map -->
             <div id="mapFrame" 
-                 loading="lazy">
+             loading="lazy">
             </div>
-        </div>
-
     </div>
-
-   
-  
+    <footer id="main-footer"></footer>
 </body>
 </html>

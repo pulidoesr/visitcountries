@@ -1,6 +1,9 @@
 // class ExternalServices that fetches the product data
 import { loadHeaderFooter } from './utils.mjs';
 
+ // load Header and Footer
+ loadHeaderFooter();
+ 
 function goToPage(option) {
     if (option === 'name') {
         window.location.href = './src/pages/index.html';
@@ -11,14 +14,5 @@ function goToPage(option) {
     }
 }
 
-function updateDateTime() {
-    const dateTimeElement = document.getElementById('dateTime');
-    const now = new Date();
-    dateTimeElement.textContent = now.toLocaleString(); // Display date and time
-}
 
- // Update the date and time every second
- setInterval(updateDateTime, 1000);
 
- // load Header and Footer
-loadHeaderFooter();

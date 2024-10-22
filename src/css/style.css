@@ -8,14 +8,24 @@
 header, footer {
   background-color: #4CAF50;
   color: white;
+  padding: 10px 0;
   text-align: center;
-  padding: 20px 0;
   position: fixed;
   width: 100%;
   left: 0;
   z-index: 10;
 }
-/* Position header at the top */
+
+
+.header-logo img {
+  max-height: 50px; /* Adjust as necessary to fit your design */
+  margin-right: 10px; /* Space between the logo and the text */
+}
+.date-time {
+  margin-left: auto; /* Push the date-time to the right */
+}
+
+/* Position footer at the bottom */
 header {
   top: 0;
 }
@@ -23,11 +33,14 @@ header {
 footer {
   bottom: 0;
 }
-
-.header-logo {
-  height: 50px; /* Adjust the logo size */
-  width: auto; /* Maintain aspect ratio */
+/* Flexbox for header content */
+.header {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: space-between; /* Adjust spacing between items */
 }
+
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -136,6 +149,6 @@ input {
 }
 
 #mapFrame {
-  height: 500px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
   width: 100%; /* Full width */
 }
