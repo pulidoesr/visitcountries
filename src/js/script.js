@@ -14,11 +14,10 @@ let map;
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  const position = { lat: 0, lng: 0 };
   console.log("Google Maps library loaded successfully");
   map = new Map(countryMapDiv, {
-    center: { lat: 0, lng: 0 },
-    zoom: 8,
+  center: { lat: 0, lng: 0 },
+  zoom: 8,
   });
  
 }
