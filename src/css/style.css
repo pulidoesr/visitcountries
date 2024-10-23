@@ -21,11 +21,8 @@ header, footer {
   max-height: 50px; /* Adjust as necessary to fit your design */
   margin-right: 10px; /* Space between the logo and the text */
 }
-.date-time {
-  margin-left: auto; /* Push the date-time to the right */
-}
 
-/* Position footer at the bottom */
+/* Position header at the top */
 header {
   top: 0;
 }
@@ -48,10 +45,6 @@ footer {
   margin-top: 20px; /* Add margin to space from header */
 }
 
-.date-time {
-  margin-right: 20px; /* Add right margin for spacing */
-  font-size: 18px;
-}
 
 button:hover {
   background-color: #45a049;
@@ -64,7 +57,6 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .button-img {
@@ -73,17 +65,23 @@ body, html {
   padding: 1px;
   align-items: center;
 }
-
-.container {
-  background-color: white;
-  border-radius: 8px;
-  padding: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 800px;
-  text-align: center;
+.worldContainer {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Takes full height of the viewport */
 }
 
-/* World grid styles */
+.worldBox {
+  background-color: #62c3ce;
+  padding: 20px;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 10px;
+  width: 50%;
+}
+
 .world-grid {
   list-style-type: none;
   font-size: 0.5rem;
@@ -96,6 +94,7 @@ body, html {
   padding-left: 0;
   padding-top: 25px;
 }
+
 .main-button {
   width: 100px;
   height: 80px; /* Maintain aspect ratio */
@@ -143,12 +142,31 @@ input {
 }
 
 .country-flag {
-  width: 100%;
-  max-width: 150px;
+  width: 30%;
+  max-width: 100px;
   margin-bottom: 10px;
 }
 
+#countryInfo {
+  margin-bottom: 10px;
+}
 #mapFrame {
+  padding: 50px;
   height: 300px; /* Adjust as needed */
   width: 100%; /* Full width */
+}
+
+/* Region Page
+/* Dropdown container styling */
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1px; /* Space between the header and the dropdown */
+  /* position: relative; */
+}
+
+/* Dropdown styling */
+select {
+  padding: 1px;
+  font-size: 14px;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; style-src *; img-src *; connect-src *;">
+
 
     <title>Country Information</title>
     <link rel="stylesheet" href="/src/css/style.css">
@@ -13,16 +13,15 @@
     <header class="divider" id="main-header"></header>
     <div class="container">
         <div id="countryName">
-            <h1></h1>
-             <input type="text" id="countryInput" placeholder="Enter country name..." />
+             <input type="text" id="countryInput" placeholder="Enter country name..." autocomplete="off"/>
              <button id="fetchButton">Get Country Info</button>
         </div>
         <!-- Country info will appear here -->
         <div id="countryInfo" class="info-box"></div> 
-            <!-- Map -->
-            <div id="mapFrame" 
+        <!-- Map -->
+        <div id="mapFrame" 
              loading="lazy">
-            </div>
+        </div>
     </div>
     <footer id="main-footer"></footer>
 </body>
