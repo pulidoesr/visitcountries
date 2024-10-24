@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/style.css">
-    <script src="/src/js/countriesbyregion.js" type="module"></script>
+    <link rel="stylesheet" href="/src/css/region.css">
+    <script src="/src/js/region.js" type="module"></script>
     <title>Countries by Region</title>
 </head>
 <body>
   <header class="divider" id="main-header"></header>
+  <div class="regionContainer">
   <div class="dropdown-container">
     <label for="regions">Select a region:</label>
     <select id="regions" name="regions">
@@ -19,7 +20,9 @@
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
     </select>
-</div>
+  </div>
+  <div class="grid-countries" id="gridCountries"></div>
+  </div>
 <footer id="main-footer"></footer>
 </body>
 </html>
