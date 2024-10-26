@@ -1,4 +1,4 @@
-import { loadHeaderFooter} from '/src/js/utils.mjs';
+import { loadHeaderFooter, readFlag} from '/src/js/utils.mjs';
 
 loadHeaderFooter();
 
@@ -10,7 +10,6 @@ const dropdown = document.getElementById('regions');
 dropdown.addEventListener('change', function() {
     // Get the selected value
     const selectedRegion = dropdown.value;
-    console.log(selectedRegion);
     loadRegionCountries(selectedRegion);
 });
 
@@ -19,10 +18,10 @@ async function loadRegionCountries(selectedRegion) {
       // Fetch the JSON file
       const response = await fetch('/src/json/countriesv1.json');
       const gridCountries = document.getElementById('gridCountries');
+    
       // Clear existing grid items before adding new ones
       gridCountries.innerHTML = '';
 
-      
       // Check if the response is successful
       if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -30,23 +29,12 @@ async function loadRegionCountries(selectedRegion) {
 
       // Loop through the data and create grid items
       const data = await response.json(); // Parse JSON data
-      console.log(data);
       data.forEach(item => {
-        const gridItem = document.createElement('div');
-        gridItem.classList.add('grid-country');
-  
+     
         // Add content to the grid country
-        if (item.region === selectedRegion) {
-            gridItem.innerHTML = `
-                <h3>${item.name.common}</h3>
-                <p>Native Language: ${item.nativeLanguage}</p>
-                <p>Currency: ${item.currency}</p>
-                <p>Calling Code: ${item.callingCode}</p>
-                <p>Area: ${item.area} km²</p>
-            `;
-    
-            // Append the grid item to the grid container
-            gridCountries.appendChild(gridItem);
+        if (item.region === selectedRegion) { 
+            getCountryFlag(item);
+            
         }
     });
 
@@ -54,4 +42,25 @@ async function loadRegionCountries(selectedRegion) {
       console.error('Error fetching or parsing the JSON file:', error);
   }
 }
-  
+
+async function getCountryFlag(item) {
+    const flagUrl = await readFlag(item.name.common);
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-country');
+    if (flagUrl) {
+        console.log("Flag URL:", flagUrl); // Should print the flag URL
+        // You can use `flagUrl` here to set the `src` of an image, for example
+        gridItem.innerHTML = `
+                <img src="${flagUrl}" flag" style="width: 30px; height: 20px; margin-right: 10px;">
+                <h3>${item.name.common}</h3>
+                <p>Native Language: ${item.nativeLanguage}</p>
+                <p>Currency: ${item.currency}</p>
+                <p>Calling Code: ${item.callingCode}</p>
+                <p>Area: ${item.area} km²</p>
+            `;
+        // Append the grid item to the grid container
+        gridCountries.appendChild(gridItem);
+    } else {
+        console.log("Flag not available.");
+    }
+}

@@ -112,3 +112,22 @@ geocoder.geocode({ address: countryName }, (results, status) => {
 });    
 }
 
+export function readFlag(countryName) {
+   
+// Fetch data from the REST Countries API
+return fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Country not found');
+    }
+    return response.json();
+})
+.then(data => {
+    const country = data[0];
+    return country.flags.svg;  
+})
+.catch(error => {
+  console.error("Error fetching flag:", error);
+  return null; // Return null if there's an error
+});
+}
