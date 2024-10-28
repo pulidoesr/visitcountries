@@ -1,0 +1,76 @@
+/* REGION PAGE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  z-index: 10;
+}
+
+.header-logo img {
+  max-height: 50px; /* Adjust as necessary to fit your design */
+  margin-right: 10px; /* Space between the logo and the text */
+}
+
+/* Position header at the top */
+header {
+  top: 0;
+  /* Do not add padding-bottom here */
+}
+
+/* Position footer at the bottom */
+footer {
+  bottom: 0;
+}
+
+/* Add padding to the body to create space below the fixed header */
+body {
+  padding-top: 90px; /* Adjust this based on the height of your header */
+}
+
+/* Region Page */
+.languageContainer {
+  width: 100%; /* Make the container full width */
+  padding: 20px; /* Add some padding inside the container */
+  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  margin-top: 10px; /* Adjust as necessary */
+}
+
+/* Dropdown container styling */
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Space between the header and the dropdown */
+}
+
+/* Dropdown styling */
+select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.grid-countries {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 10px; /* Space between items */
+  padding: 20px;
+}
+
+.grid-country {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+  align-items: center;
+}

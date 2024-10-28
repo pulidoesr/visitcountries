@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/region.css">
-    <script src="/src/js/region.js" type="module"></script>
+    <link rel="stylesheet" href="/src/css/language.css">
+    <script src="/src/js/language.js" type="module"></script>
     <title>Countries by Language</title>
 </head>
 <body>
   <header class="divider" id="main-header"></header>
-  <div class="regionContainer">
+  <div class="languageContainer">
   <div class="dropdown-container">
-    <label for="regions">Select a Language:</label>
-    <select id="regions" name="regions">
+    <label for="languages">Select a Language:</label>
+    <select id="languages" name="languages">
         <option value="">Select an option</option>
-        <option value="Americas">America</option>
-        <option value="Africa">Africa</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
+        <option value="ara">Arabic</option>
+        <option value="spa">Spanish</option>
+        <option value="eng">English</option>
+        <option value="fra">French</option>
+        <option value="deu">German</option>
+        <option value="ita">Italian</option>
+        <option value="rus">Russian</option>
     </select>
   </div>
   <div class="grid-countries" id="gridCountries"></div>

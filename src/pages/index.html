@@ -12,12 +12,14 @@
 <body>
     <header class="divider" id="main-header"></header>
     <div class="container">
-        <div id="countryName">
-             <input type="text" id="countryInput" placeholder="Enter country name..." autocomplete="off"/>
-             <button id="fetchButton">Get Country Info</button>
+        <div class="flex-container">
+            <div id="countryName">
+                <input type="text" id="countryInput" placeholder="Enter country name..." autocomplete="off"/>
+                <button id="fetchButton">Get Country Info</button>
+            </div>
+            <!-- Country info will appear here -->
+            <div id="countryInfo" class="info-box"></div> 
         </div>
-        <!-- Country info will appear here -->
-        <div id="countryInfo" class="info-box"></div> 
         <!-- Map -->
         <div id="mapFrame">
         </div>
