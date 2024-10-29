@@ -62,7 +62,9 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}`)
     const country = data[0];
      // Convert the shortened URL into an embeddable format
     const countryDetails = `
+     <a href="/src/pages/index.html?country=${encodeURIComponent(country.name.common)}">
         <img class="country-flag" src="${country.flags.svg}" alt="Flag of ${country.name.common}">
+    </a>
         <p><strong>Name:</strong> ${country.name.common}</p>
         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
         <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>

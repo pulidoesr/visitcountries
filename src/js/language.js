@@ -53,7 +53,9 @@ async function getCountryFlag(item) {
     if (flagUrl) {
         // You can use `flagUrl` here to set the `src` of an image, for example
         gridItem.innerHTML = `
+            <a href="/src/pages/index.html?country=${encodeURIComponent(item.name.common)}">
                 <img src="${flagUrl}" flag" style="width: 30px; height: 20px; margin-right: 10px;">
+            </a>
                 <h3>${item.name.common}</h3>
                 <p>Native Language: ${item.nativeLanguage}</p>
                 <p>Currency: ${item.currency}</p>

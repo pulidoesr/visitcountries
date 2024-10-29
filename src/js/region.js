@@ -42,16 +42,17 @@ async function loadRegionCountries(selectedRegion) {
       console.error('Error fetching or parsing the JSON file:', error);
   }
 }
-
 async function getCountryFlag(item) {
     const flagUrl = await readFlag(item.name.common);
     const gridItem = document.createElement('div');
     gridItem.classList.add('grid-country');
     if (flagUrl) {
-        console.log("Flag URL:", flagUrl); // Should print the flag URL
+       
         // You can use `flagUrl` here to set the `src` of an image, for example
         gridItem.innerHTML = `
+            <a href="/src/pages/index.html?country=${encodeURIComponent(item.name.common)}">
                 <img src="${flagUrl}" flag" style="width: 30px; height: 20px; margin-right: 10px;">
+            </a>
                 <h3>${item.name.common}</h3>
                 <p>Native Language: ${item.nativeLanguage}</p>
                 <p>Currency: ${item.currency}</p>
@@ -64,3 +65,4 @@ async function getCountryFlag(item) {
         console.log("Flag not available.");
     }
 }
+
