@@ -131,3 +131,12 @@ return fetch(`https://restcountries.com/v3.1/name/${countryName}`)
   return null; // Return null if there's an error
 });
 }
+
+// retrieve data from localstorage
+export function getLocalStorage(key) {
+  return JSON.parse(JSON.parse(localStorage.getItem(key)));
+}
+// save data to local storage
+export function setLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}

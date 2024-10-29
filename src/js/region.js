@@ -1,4 +1,4 @@
-import { loadHeaderFooter, readFlag} from '/src/js/utils.mjs';
+import { loadHeaderFooter, readFlag, getLocalStorage,setLocalStorage} from '/src/js/utils.mjs';
 
 loadHeaderFooter();
 
@@ -12,6 +12,8 @@ dropdown.addEventListener('change', function() {
     const selectedRegion = dropdown.value;
     loadRegionCountries(selectedRegion);
 });
+
+
 
 async function loadRegionCountries(selectedRegion) {
   try {
@@ -51,7 +53,7 @@ async function getCountryFlag(item) {
         // You can use `flagUrl` here to set the `src` of an image, for example
         gridItem.innerHTML = `
             <a href="/src/pages/index.html?country=${encodeURIComponent(item.name.common)}">
-                <img src="${flagUrl}" flag" style="width: 30px; height: 20px; margin-right: 10px;">
+                <img src="${flagUrl}" style="width: 30px; height: 20px; margin-right: 10px;" onclick="storeCountry('${item.name.common}')">
             </a>
                 <h3>${item.name.common}</h3>
                 <p>Native Language: ${item.nativeLanguage}</p>
@@ -66,3 +68,15 @@ async function getCountryFlag(item) {
     }
 }
 
+function storeCountry(Country) {
+    let cartCountry = getLocalStorage("so-country");
+    if (!cartCountry) {
+      cartCountry = [];
+    }
+    // Now cartContents is guaranteed to be an array
+    cartCountry.push(Country);
+    setLocalStorage("so-country", JSON.stringify(cartCountry)); // Store as JSON string
+  }
+  
+// Make storeCountry accessible globally
+window.storeCountry = storeCountry;
