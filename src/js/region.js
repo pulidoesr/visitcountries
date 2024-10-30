@@ -4,7 +4,7 @@ loadHeaderFooter();
 
 // Get the dropdown element and output paragraph
 const dropdown = document.getElementById('regions');
-
+dropdown.selectedIndex = 0;
 
 // Add an event listener for the 'change' event
 dropdown.addEventListener('change', function() {
@@ -47,13 +47,14 @@ async function loadRegionCountries(selectedRegion) {
 async function getCountryFlag(item) {
     const flagUrl = await readFlag(item.name.common);
     const gridItem = document.createElement('div');
+    const Country = item.name.common;
     gridItem.classList.add('grid-country');
     if (flagUrl) {
        
         // You can use `flagUrl` here to set the `src` of an image, for example
         gridItem.innerHTML = `
-            <a href="/src/pages/index.html?country=${encodeURIComponent(item.name.common)}">
-                <img src="${flagUrl}" style="width: 30px; height: 20px; margin-right: 10px;" onclick="storeCountry('${item.name.common}')">
+            <a href="/src/pages/index.html?country=${encodeURIComponent(Country)}">
+                <img src="${flagUrl}" style="width: 30px; height: 20px; margin-right: 10px;" onclick="storeCountry('${Country}')">
             </a>
                 <h3>${item.name.common}</h3>
                 <p>Native Language: ${item.nativeLanguage}</p>
@@ -64,7 +65,7 @@ async function getCountryFlag(item) {
         // Append the grid item to the grid container
         gridCountries.appendChild(gridItem);
     } else {
-        console.log("Flag not available.");
+        console.log("Flag not available." + Country);
     }
 }
 
