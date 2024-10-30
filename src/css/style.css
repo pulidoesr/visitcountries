@@ -113,8 +113,8 @@ body, html {
 }
 #countryName {
     position: relative;
-    top: 50px; /* Adjust as needed */
-    bottom: 10px;
+    top: 30px; /* Adjust as needed */
+    bottom: 30px;
 }
 
 #fetchButton {
@@ -126,7 +126,7 @@ body, html {
   border-radius: 8px; /* Rounded corners */
   cursor: pointer; /* Show pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth background color change */
-  bottom: 20px;
+  bottom: 10px;
 }
 
 #fetchButton:hover {
@@ -173,7 +173,7 @@ input {
 }
 #mapFrame {
   position: relative;
-  top: 30px;
+  top: 40px;
   height: 400px; /* Adjust as needed */
   width: 100%; /* Full width */
 }
