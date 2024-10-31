@@ -70,10 +70,12 @@ body, html {
   align-items: center;
 }
 .worldContainer {
+  position: relative;
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   height: 100vh; /* Takes full height of the viewport */
+  top:110px;
 }
 
 .worldBox {
@@ -108,7 +110,7 @@ body, html {
 /* Country Page */
 .container {
   position: relative;
-  top: 20px;
+  top: 110px;
   z-index: 5;
 }
 #countryName {

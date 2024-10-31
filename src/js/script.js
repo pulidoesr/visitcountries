@@ -10,9 +10,11 @@ document.getElementById('fetchButton').addEventListener('click', fetchCountryInf
 document.addEventListener("DOMContentLoaded", () => {
   const countryName = getCountryFromURL();
   if (countryName) {
+      initMap();
       readcountry(countryName);  // Call readcountry with the country name if it exists
   }
 });
+
  countryInput.focus();
 function fetchCountryInfo() {
     const countryName = document.getElementById('countryInput').value.trim();
